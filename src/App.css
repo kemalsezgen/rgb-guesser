@@ -5,8 +5,9 @@
   background-color: rgb(164, 142, 142);
 }
 
-html, body {
-  height: 100%; 
+html,
+body {
+  height: 100%;
 }
 
 a {
@@ -33,7 +34,7 @@ ul {
   border: 2px solid black;
   padding: 10px;
   border-radius: 10px;
-  margin: 200px 0 100px;
+  margin: 100px 0 100px;
 }
 
 .colour-container-inner {
@@ -57,4 +58,98 @@ ul {
   font-size: 16px;
   border: 1px solid black;
   border-radius: 8px;
+}
+
+.guesser-container {
+  display: flex;
+  flex-direction: column;
+  width: 700px;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  width: 85%;
+  height: 20px;
+  border-radius: 10px;
+  outline: none;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+input[type="range"].red-input {
+  background: linear-gradient(to right, rgb(255, 180, 180), red);
+}
+
+input[type="range"].green-input {
+  background: linear-gradient(to right, rgb(180, 255, 180), green);
+}
+
+input[type="range"].blue-input {
+  background: linear-gradient(to right, rgb(180, 180, 255), blue);
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+input[type="range"].red-input::-webkit-slider-thumb {
+  background: red;
+  border: 1px solid black;
+}
+
+input[type="range"].green-input::-webkit-slider-thumb {
+  background: green;
+  border: 1px solid black
+}
+
+input[type="range"].blue-input::-webkit-slider-thumb {
+  background: blue;
+  border: 1px solid black
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: #000;
+  cursor: pointer;
+}
+
+input[type="range"].red-input::-moz-range-thumb {
+  background: red;
+  border: 1px solid black
+}
+
+input[type="range"].green-input::-moz-range-thumb {
+  background: green;
+  border: 1px solid black
+}
+
+input[type="range"].blue-input::-moz-range-thumb {
+  background: blue;
+  border: 1px solid black
+}
+
+.input-group {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  gap: 3%;
+  padding: 10px;
+}
+
+.input-number {
+  width: 12%;
+  height: 100%;
+  padding: 7px;
 }
