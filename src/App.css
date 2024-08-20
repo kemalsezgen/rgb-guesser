@@ -11,7 +11,17 @@ body {
 }
 
 a {
+  color: inherit;
   text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+a:hover {
+  color: #232323;
+  cursor: pointer;
 }
 
 ul {
@@ -22,8 +32,20 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh; 
+  min-height: 100vh;
   overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 60px;
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
 }
 
 .colour-container {
@@ -62,6 +84,11 @@ ul {
   font-size: 16px;
   border: 1px solid black;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #a4a4a4;
 }
 
 .guesser-container {
@@ -198,4 +225,59 @@ input[type="range"].blue-input::-moz-range-thumb {
 
 .colour-container h1 {
   font-size: 48px;
+}
+
+@media(max-width: 768px) {
+  .btn {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .colour-container h1 {
+    font-size: 32px;
+    margin-bottom: 72px;
+  }
+
+  .predictions-container {
+    width: 450px;
+    height: 90px;
+    margin-bottom: 80px;
+  }
+
+  .predictions-container-inner {
+    border: 1px solid black;
+  }
+
+  .prediction-box {
+    width: 90px;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .prediction-box:hover {
+    height: 110px;
+  }
+
+  .predictions-container h2 {
+    font-size: 18px;
+  }
+
+  .prediction-box p {
+    font-size: 11px;
+  }
+
+  input[type="range"] {
+    height: 15px;
+  }
+
+  .guesser-container {
+    width: 450px;
+  }
+
+  .input-number {
+    width: 12%;
+    height: 100%;
+    padding: 4px;
+  }
+
 }

@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import ColourContainer from "./components/ColourContainer";
 import Guesser from "./components/Guesser";
 import Predictions from "./components/Predictions";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { color } = useSelector(state => state.colour);
@@ -14,8 +15,9 @@ const App = () => {
   return (
     <div className="App" style={{ backgroundColor: rgbColor, color: textColor }}>
       <ColourContainer />
-      <Predictions />
-      <Guesser />
+      <Predictions textColor={textColor} />
+      <Guesser textColor={textColor} />
+      <Footer />
     </div>
   );
 }

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { guessColour, resetGuess, changeColour, resetGuessList } from '../stores/colour';
 import { endGame, startGame } from '../stores/game';
 
-const Guesser = () => {
+const Guesser = ({ textColor }) => {
 
   const dispatch = useDispatch();
   const { color, guess, guessList, selectedGuess } = useSelector(state => state.colour); // selectedGuess eklendi
@@ -59,7 +59,7 @@ const Guesser = () => {
   const containerBackgroundColor = brightness < 128 ? 'lightgray' : 'dimgray';
 
   return (
-    <div className='guesser-container' style={{ backgroundColor: containerBackgroundColor }}>
+    <div className='guesser-container' style={{ backgroundColor: containerBackgroundColor, border: `1px solid ${textColor}` }}>
       <div className='input-group'>
         <input
           className='red-input'

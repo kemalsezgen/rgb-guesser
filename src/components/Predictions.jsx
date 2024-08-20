@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectGuess } from '../stores/colour';
 
-const Predictions = () => {
+const Predictions = ({ textColor }) => {
   const dispatch = useDispatch();
   const { color, guessList } = useSelector(state => state.colour);
   const { game } = useSelector(state => state.game);
@@ -41,7 +41,7 @@ const Predictions = () => {
           )}
         </>
       )}
-      <div className='predictions-container-inner'>
+      <div className='predictions-container-inner' style={{ border: `1px solid ${textColor}` }}>
         {guessList.map(prediction => {
           const rgbColor = `rgb(${prediction.data.red}, ${prediction.data.green}, ${prediction.data.blue})`;
           const textColor = calculateTextColor(prediction.data);
