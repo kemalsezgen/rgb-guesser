@@ -34,7 +34,7 @@ ul {
   min-height: 30%;
   padding: 10px;
   border-radius: 10px;
-  margin: 100px 0 100px;
+  margin: 100px 0 50px;
 }
 
 .colour-container-inner {
@@ -190,4 +190,12 @@ input[type="range"].blue-input::-moz-range-thumb {
 
 .prediction-box p {
   background-color: initial;
+}
+
+.prediction-box:hover {
+  height: 120px;
+}
+
+.colour-container h1 {
+  font-size: 48px;
 }

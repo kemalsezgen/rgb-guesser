@@ -4,7 +4,7 @@ const ColourContainer = () => {
 
   return (
     <div className='colour-container'>
-      <h1>GUESS THE COLOUR RGB</h1>
+      <h1>GUESS THE RGB</h1>
     </div>
   );
 }

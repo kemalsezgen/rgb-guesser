@@ -4,7 +4,7 @@ import { selectGuess } from '../stores/colour';
 
 const Predictions = () => {
   const dispatch = useDispatch();
-  const { guessList } = useSelector(state => state.colour);
+  const { color, guessList } = useSelector(state => state.colour);
   const { game } = useSelector(state => state.game);
 
   const calculateTextColor = ({ red, green, blue }) => {
@@ -31,10 +31,13 @@ const Predictions = () => {
           )}
 
           {game.isFinished && !guessList.some(guess => guess.percentage === 100) && (
-            <h2>
-              {`Your best score is ${guessList.reduce((max, obj) =>
-                obj.percentage > max.percentage ? obj : max, guessList[0]).percentage}%.`}
-            </h2>
+            <>
+              <h2>
+                {`It was (${color.red}, ${color.green}, ${color.blue}).
+                Your best score is ${guessList.reduce((max, obj) =>
+                  obj.percentage > max.percentage ? obj : max, guessList[0]).percentage}%`}
+              </h2>
+            </>
           )}
         </>
       )}
