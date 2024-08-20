@@ -5,12 +5,26 @@ const getRandomRGB = () => {
   const g = Math.floor(Math.random() * 256);
   const b = Math.floor(Math.random() * 256);
 
-  return { red: r.toString(), green: g.toString(), blue: b.toString() };
+  return { red: r, green: g, blue: b };
+}
+
+function calculateAccuracy(actual, guess) {
+  const redAccuracy = (1 - Math.abs(actual.red - guess.red) / 255) * 100;
+  const greenAccuracy = (1 - Math.abs(actual.green - guess.green) / 255) * 100;
+  const blueAccuracy = (1 - Math.abs(actual.blue - guess.blue) / 255) * 100;
+
+  const overallAccuracy = (redAccuracy + greenAccuracy + blueAccuracy) / 3;
+  console.log("ovv: " + overallAccuracy)
+
+  return overallAccuracy.toFixed(2);
 }
 
 const initialState = {
   color: getRandomRGB(),
-  guess: null,
+  guess: {
+    data: null,
+    percentage: null,
+  },
   guessList: []
 };
 
@@ -29,13 +43,19 @@ const colour = createSlice({
       };
     },
     guessColour: (state, action) => {
-      state.guess = action.payload;
-      if (!state.guessList.some(g => g.red === state.guess.red && g.green === state.guess.green && g.blue === state.guess.blue)) {
+      state.guess = {
+        data: action.payload,
+        percentage: Number(calculateAccuracy(action.payload, state.color))
+      };
+      if (!state.guessList.some(g => g.data.red === state.guess.data.red && g.data.green === state.guess.data.green && g.data.blue === state.guess.data.blue)) {
         state.guessList.push(state.guess);
       }
     },
     resetGuess: state => {
-      state.guess = null;
+      state.guess = {
+        data: null,
+        percentage: null,
+      };
     },
     resetGuessList: state => {
       state.guessList = [];

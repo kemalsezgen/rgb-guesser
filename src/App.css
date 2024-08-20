@@ -177,7 +177,16 @@ input[type="range"].blue-input::-moz-range-thumb {
 }
 
 .prediction-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   border: 1px solid black;
   width: 100px;
   height: 100%;
+}
+
+.prediction-box p {
+  transform: rotate(270deg);
+  background-color: initial;
 }

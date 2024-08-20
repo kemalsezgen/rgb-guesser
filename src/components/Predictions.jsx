@@ -14,13 +14,18 @@ const Predictions = () => {
           return (
             <div
               className='prediction-box'
-              style={{ backgroundColor: `rgb(${prediction.red}, ${prediction.green}, ${prediction.blue})` }}
-              key={`rgb(${prediction.red}, ${prediction.green}, ${prediction.blue})`}
-            />
+              style={{ backgroundColor: `rgb(${prediction.data.red}, ${prediction.data.green}, ${prediction.data.blue})` }}
+              key={`rgb(${prediction.data.red}, ${prediction.data.green}, ${prediction.data.blue})`}
+            >
+              <p>{prediction.percentage}</p>
+            </div>
           )
         })}
       </div>
-      {game.isFinished === true && (<p>{`You figured it out in ${guessList.length} ${guessList.length > 1 ? 'tries!' : 'try!'}`}</p>)}
+      {game.isFinished === true && guessList.some(guess => guess.percentage === 100) &&
+        (<p>{`You figured it out in ${guessList.length} ${guessList.length > 1 ? 'tries!' : 'try!'}`}</p>)}
+      {game.isFinished === true && !guessList.some(guess => guess.percentage === 100) &&
+        (<p>{`Your best score is ${guessList.reduce((max, obj) => obj.percentage > max.percentage ? obj : max, guessList[0]).percentage}%.`}</p>)}
     </div>
   )
 }
