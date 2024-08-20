@@ -279,5 +279,49 @@ input[type="range"].blue-input::-moz-range-thumb {
     height: 100%;
     padding: 4px;
   }
+}
 
+@media(max-width: 450px) {
+  .btn {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .colour-container h1 {
+    font-size: 32px;
+    margin-bottom: 36px;
+  }
+
+  .predictions-container {
+    width: 360px;
+    height: 90px;
+    margin-bottom: 60px;
+  }
+
+  .predictions-container-inner {
+    border: 1px solid black;
+  }
+
+  .prediction-box {
+    width: 60px;
+    height: 100%;
+  }
+
+  .predictions-container h2 {
+    font-size: 14px;
+  }
+
+  .prediction-box p {
+    font-size: 10px;
+  }
+
+  .guesser-container {
+    width: 360px;
+  }
+
+  .input-number {
+    width: 12%;
+    height: 100%;
+    padding: 3px;
+  }
 }
