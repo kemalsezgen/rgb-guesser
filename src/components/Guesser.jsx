@@ -2,12 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { guessColour, resetGuess, changeColour, resetGuessList } from '../stores/colour';
 import { endGame, startGame } from '../stores/game';
-import _ from 'lodash';
 
 const Guesser = () => {
 
   const dispatch = useDispatch();
-  const { color, guess, guessList } = useSelector(state => state.colour);
+  const { color, guess, guessList, selectedGuess } = useSelector(state => state.colour); // selectedGuess eklendi
   const { game } = useSelector(state => state.game);
 
   const [rgb, setRgb] = useState({
@@ -17,12 +16,14 @@ const Guesser = () => {
   });
 
   useEffect(() => {
-    console.log("color:", color);
-    console.log("guess:", guess);
     if (guess.percentage === 100 || guessList.length === 10) {
       dispatch(endGame());
     }
   }, [guess, dispatch, color, guessList]);
+
+  useEffect(() => {
+    setRgb(selectedGuess);
+  }, [selectedGuess]);
 
   const handleNext = () => {
     dispatch(resetGuess());
@@ -50,8 +51,15 @@ const Guesser = () => {
     setRgb({ ...rgb, [color]: Number(value) });
   };
 
+  const calculateBrightness = ({ red, green, blue }) => {
+    return (red * 299 + green * 587 + blue * 114) / 1000;
+  };
+
+  const brightness = calculateBrightness(color);
+  const containerBackgroundColor = brightness < 128 ? 'lightgray' : 'dimgray';
+
   return (
-    <div className='guesser-container'>
+    <div className='guesser-container' style={{ backgroundColor: containerBackgroundColor }}>
       <div className='input-group'>
         <input
           className='red-input'
