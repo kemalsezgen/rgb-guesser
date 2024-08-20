@@ -30,8 +30,7 @@ ul {
   flex-direction: column;
   align-items: center;
   width: 700px;
-  min-height: 50%;
-  border: 2px solid black;
+  min-height: 30%;
   padding: 10px;
   border-radius: 10px;
   margin: 100px 0 100px;
@@ -39,20 +38,24 @@ ul {
 
 .colour-container-inner {
   width: 100%;
-  height: 200px;
+  height: 100px;
   border: 2px solid rgb(0, 0, 0);
   margin-bottom: 10px;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .buttons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
 }
 
-.buttons button {
+.btn {
   width: 50%;
   padding: 15px;
   font-size: 16px;
@@ -63,9 +66,9 @@ ul {
 .guesser-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 700px;
   border: 2px solid black;
-  border-radius: 10px;
 }
 
 input[type="range"] {
@@ -152,4 +155,38 @@ input[type="range"].blue-input::-moz-range-thumb {
   width: 12%;
   height: 100%;
   padding: 7px;
+}
+
+.guess-button,
+.next-button {
+  margin-bottom: 10px;
+}
+
+.predictions-container {
+  width: 700px;
+  height: 100px;
+  margin-bottom: 100px;
+}
+
+.predictions-container-inner {
+  display: flex;
+  justify-content: baseline;
+  border: 2px solid black;
+  width: 100%;
+  height: 100%;
+}
+
+.prediction-box {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  border: 1px solid black;
+  width: 100px;
+  height: 100%;
+}
+
+.prediction-box p {
+  transform: rotate(270deg);
+  background-color: initial;
 }
