@@ -14,7 +14,6 @@ function calculateAccuracy(actual, guess) {
   const blueAccuracy = (1 - Math.abs(actual.blue - guess.blue) / 255) * 100;
 
   const overallAccuracy = (redAccuracy + greenAccuracy + blueAccuracy) / 3;
-  console.log("ovv: " + overallAccuracy)
 
   return overallAccuracy.toFixed(2);
 }
@@ -25,7 +24,12 @@ const initialState = {
     data: null,
     percentage: null,
   },
-  guessList: []
+  guessList: [],
+  selectedGuess: {
+    red: 0,
+    green: 0,
+    blue: 0
+  }
 };
 
 const colour = createSlice({
@@ -59,9 +63,12 @@ const colour = createSlice({
     },
     resetGuessList: state => {
       state.guessList = [];
+    },
+    selectGuess: (state, action) => {
+      state.selectedGuess = action.payload;
     }
   }
 })
 
-export const { changeColour, resetColour, guessColour, resetGuess, resetGuessList } = colour.actions;
+export const { changeColour, resetColour, guessColour, resetGuess, resetGuessList, selectGuess } = colour.actions;
 export default colour.reducer;
