@@ -6,7 +6,7 @@ import { endGame, startGame } from '../stores/game';
 const Guesser = ({ textColor }) => {
 
   const dispatch = useDispatch();
-  const { color, guess, guessList, selectedGuess } = useSelector(state => state.colour); // selectedGuess eklendi
+  const { color, guess, guessList, selectedGuess } = useSelector(state => state.colour);
   const { game } = useSelector(state => state.game);
 
   const [rgb, setRgb] = useState({
@@ -68,6 +68,7 @@ const Guesser = ({ textColor }) => {
           max="255"
           value={rgb.red}
           onChange={(e) => handleInputChange(e, 'red')}
+          aria-label="Red Slider"
         />
         <input
           className='input-number'
@@ -114,7 +115,7 @@ const Guesser = ({ textColor }) => {
           onChange={(e) => handleInputChange(e, 'blue')}
         />
       </div>
-      <button className='btn guess-button' disabled={game.isFinished}
+      <button className='btn guess-button' disabled={game?.isFinished}
         onClick={() => dispatch(guessColour(rgb))}>guess</button>
       {guess &&
         <button className={`btn next-button`} onClick={handleNext}>
