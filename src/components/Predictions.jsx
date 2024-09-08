@@ -18,28 +18,24 @@ const Predictions = ({ textColor }) => {
 
   return (
     <div className='predictions-container'>
-      {10 - guessList.length > 0 ? (
-        <h2>
-          You have {10 - guessList.length} {10 - guessList.length > 1 ? 'chances' : 'chance'}
-        </h2>
-      ) : (
+      {game.isFinished ? (
         <>
-          {game.isFinished && guessList.some(guess => guess.percentage === 100) && (
+          {guessList.some(guess => guess.percentage === 100) ? (
             <h2>
-              {`You figured it out in ${guessList.length} ${guessList.length > 1 ? 'tries' : 'try'}!`}
+              Congratulations! You guessed the correct RGB color in {guessList.length} {guessList.length > 1 ? 'tries' : 'try'}!
+            </h2>
+          ) : (
+            <h2>
+              Game Over! The correct color was RGB({color.red}, {color.green}, {color.blue}).
+              Your best guess was {guessList.reduce((max, obj) =>
+                obj.percentage > max.percentage ? obj : max, guessList[0]).percentage}% accurate.
             </h2>
           )}
-
-          {game.isFinished && !guessList.some(guess => guess.percentage === 100) && (
-            <>
-              <h2>
-                {`It was (${color.red}, ${color.green}, ${color.blue}).
-                Your best score is ${guessList.reduce((max, obj) =>
-                  obj.percentage > max.percentage ? obj : max, guessList[0]).percentage}%`}
-              </h2>
-            </>
-          )}
         </>
+      ) : (
+        <h2>
+          You have {10 - guessList.length} {10 - guessList.length > 1 ? 'chances' : 'chance'} left
+        </h2>
       )}
       <div className='predictions-container-inner' style={{ border: `1px solid ${textColor}` }}>
         {guessList.map(prediction => {

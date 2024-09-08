@@ -16,10 +16,12 @@ const Guesser = ({ textColor }) => {
   });
 
   useEffect(() => {
-    if (guess.percentage === 100 || guessList.length === 10) {
+    if (guess.percentage === 100) {
+      dispatch(endGame());
+    } else if (guessList.length === 10) {
       dispatch(endGame());
     }
-  }, [guess, dispatch, color, guessList]);
+  }, [guess, dispatch, guessList]);
 
   useEffect(() => {
     setRgb(selectedGuess);

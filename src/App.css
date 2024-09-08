@@ -32,7 +32,7 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 100dvh;
   overflow: hidden;
 }
 
@@ -97,6 +97,7 @@ ul {
   align-items: center;
   width: 700px;
   border: 2px solid black;
+  margin-top: 25px;
 }
 
 input[type="range"] {
@@ -194,6 +195,7 @@ input[type="range"].blue-input::-moz-range-thumb {
   width: 700px;
   height: 100px;
   margin-bottom: 100px;
+  margin-top: 20px;
 }
 
 .predictions-container-inner {
@@ -202,6 +204,7 @@ input[type="range"].blue-input::-moz-range-thumb {
   border: 2px solid black;
   width: 100%;
   height: 100%;
+  margin: 15px 0;
 }
 
 .prediction-box {
@@ -242,6 +245,7 @@ input[type="range"].blue-input::-moz-range-thumb {
     width: 450px;
     height: 90px;
     margin-bottom: 80px;
+    margin-top: 15px; /* Mobil cihazlar için daha küçük bir değer */
   }
 
   .predictions-container-inner {
